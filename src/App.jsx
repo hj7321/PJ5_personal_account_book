@@ -1,17 +1,11 @@
-import Calendar from "./components/Calendar";
-import Category from "./components/Category";
-import Form from "./components/Form";
-import Graph from "./components/Graph";
 import GlobalStyle from "./components/style/GlobalStyle";
+import HomePage from "./components/pages/HomePage";
 
 function App() {
   return (
     <>
       <GlobalStyle />
-      <Form />
-      <Calendar />
-      <Graph />
-      <Category />
+      <HomePage />
     </>
   );
 }

@@ -1,4 +1,4 @@
-import { Button, FormBox, InputContainer } from "./style/FormStyle";
+import { Button, FormBox, InputContainer } from "../style/FormStyle";
 
 const Form = () => {
   const addExpense = (e) => {
@@ -21,19 +21,19 @@ const Form = () => {
   return (
     <FormBox onSubmit={addExpense}>
       <InputContainer>
-        <label for="date">날짜</label>
+        <label htmlFor="date">날짜</label>
         <input type="date" id="date" name="date" />
       </InputContainer>
       <InputContainer>
-        <label for="list">항목</label>
+        <label htmlFor="list">항목</label>
         <input type="text" id="list" name="list" placeholder="지출 항목" />
       </InputContainer>
       <InputContainer>
-        <label for="amount">금액</label>
+        <label htmlFor="amount">금액</label>
         <input type="text" id="amount" name="amount" placeholder="지출 금액" />
       </InputContainer>
       <InputContainer>
-        <label for="content">내용</label>
+        <label htmlFor="content">내용</label>
         <input
           type="text"
           id="content"
