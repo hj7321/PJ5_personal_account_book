@@ -12,6 +12,13 @@ const GlobalStyle = createGlobalStyle`
   button {
     cursor: pointer;
   }
+  h3 {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  input {
+    height: 25px;
+  }
   /* form, div {
     background-color: aliceblue;
     border-radius: 10px;

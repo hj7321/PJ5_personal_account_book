@@ -1,15 +1,15 @@
-import Calendar from "../home/Calendar";
-import Category from "../home/Category";
+import { useState } from "react";
+import initialExpense from "../../data/dummyData.json";
 import Form from "../home/Form";
-import Graph from "../home/Graph";
+import Calendar from "../home/Calendar";
 
 const HomePage = () => {
+  const [expense, setExpense] = useState(initialExpense);
+
   return (
     <>
       <Form />
-      <Calendar />
-      <Graph />
-      <Category />
+      <Calendar setExpense={setExpense} expense={expense} />
     </>
   );
 };
