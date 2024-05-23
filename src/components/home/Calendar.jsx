@@ -1,39 +1,40 @@
-import initialExpense from "../../data/dummyData.json";
-import { Section } from "../style/CalendarStyle";
-import { Button } from "../style/CalendarStyle";
+import { StSection, StButton } from "../style/CalendarStyle";
 import Graph from "./Graph";
 import Category from "./Category";
+import { useState } from "react";
 
 const Calendar = ({ setExpense, expense }) => {
+  const [month, setMonth] = useState(
+    JSON.parse(localStorage.getItem("month")) || 1
+  );
   const monthNumArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
-  const showExpense = (month) => {
-    setExpense(initialExpense);
-    setExpense((expense) =>
-      expense.filter((ele) => ele.date.split("-")[1] == month)
-    );
+  const showExpense = (monthNum) => {
+    setMonth(monthNum);
+    localStorage.setItem("month", JSON.stringify(monthNum));
+    setExpense(expense.filter((obj) => obj.date.split("-")[1] == monthNum));
   };
 
   return (
     <>
-      <Section>
+      <StSection>
         {monthNumArr.map((monthNum) => (
-          <Button
+          <StButton
             key={monthNum}
             onClick={() => {
               showExpense(monthNum);
             }}
           >
             {monthNum}월
-          </Button>
+          </StButton>
         ))}
-      </Section>
-      <Section>
-        <Graph expense={expense} />
-      </Section>
-      <Section>
+      </StSection>
+      <StSection>
+        <Graph month={month} expense={expense} />
+      </StSection>
+      <StSection>
         <Category expense={expense} />
-      </Section>
+      </StSection>
     </>
   );
 };

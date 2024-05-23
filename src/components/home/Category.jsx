@@ -1,7 +1,7 @@
-import { Section } from "../style/CalendarStyle";
+import { StSection } from "../style/CalendarStyle";
 
 const Category = () => {
-  return <Section>안녕</Section>;
+  return <StSection>카테고리 영역</StSection>;
 };
 
 export default Category;

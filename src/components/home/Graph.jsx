@@ -1,10 +1,20 @@
-import { Section } from "../style/CalendarStyle";
+import { StSection } from "../style/CalendarStyle";
 
-const Graph = ({ expense }) => {
+const Graph = ({ month, expense }) => {
   return (
-    <Section>
-      <h3>1월 총 지출: 100,000원</h3>
-    </Section>
+    <StSection>
+      <h3>
+        {month}월 총 지출:{" "}
+        {expense
+          ? expense
+              .reduce((amount, obj) => {
+                return amount + obj.amount;
+              }, 0)
+              .toLocaleString()
+          : 0}
+        원
+      </h3>
+    </StSection>
   );
 };
 

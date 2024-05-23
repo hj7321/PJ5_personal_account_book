@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const FormBox = styled.form`
+export const StForm = styled.form`
   display: flex;
   background-color: aliceblue;
   border-radius: 10px;
@@ -10,13 +10,13 @@ export const FormBox = styled.form`
   justify-content: center;
 `;
 
-export const InputContainer = styled.div`
+export const StDiv = styled.div`
   display: inline-flex;
   flex-direction: column;
   gap: 5px;
 `;
 
-export const Button = styled.button`
+export const StButton = styled.button`
   border-radius: 10px;
   width: 100px;
 `;

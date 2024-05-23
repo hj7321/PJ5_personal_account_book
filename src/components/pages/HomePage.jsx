@@ -8,7 +8,7 @@ const HomePage = () => {
 
   return (
     <>
-      <Form />
+      <Form setExpense={setExpense} />
       <Calendar setExpense={setExpense} expense={expense} />
     </>
   );

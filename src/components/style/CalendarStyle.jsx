@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Section = styled.section`
+export const StSection = styled.section`
   display: flex;
   flex-wrap: wrap;
   background-color: aliceblue;
@@ -11,7 +11,7 @@ export const Section = styled.section`
   justify-content: center;
 `;
 
-export const Button = styled.button`
+export const StButton = styled.button`
   border-radius: 10px;
   padding: 20px;
   width: 100px;
