@@ -13,6 +13,7 @@ const Form = ({ setExpense }) => {
     if (!date) return alert("날짜를 입력해주세요.");
     else if (!item.trim()) return alert("지출 항목을 입력해주세요.");
     else if (!amount) return alert("지출 금액을 입력해주세요.");
+    else if (amount < 0) return alert("알맞은 지출 금액을 입력해주세요.");
     else if (!description.trim()) return alert("지출 내용을 입력해주세요.");
 
     // 데이터 추가하기

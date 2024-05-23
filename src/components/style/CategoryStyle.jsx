@@ -14,6 +14,11 @@ export const StList = styled.li`
   background-color: #9cffcd;
   padding: 10px;
   line-height: 1.5;
+  cursor: pointer;
+  &:hover {
+    transform: scale(1.02);
+    transition-duration: 0.2s;
+  }
 `;
 
 export const StDiv = styled.div`

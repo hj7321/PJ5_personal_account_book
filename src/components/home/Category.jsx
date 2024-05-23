@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { StSection } from "../style/CalendarStyle";
 import { StList, StUl, StDiv, StP } from "../style/CategoryStyle";
 
@@ -12,13 +13,15 @@ const Category = ({ month, expense }) => {
       <StUl>
         {filteredExpense.map((obj) => (
           <StList key={obj.id}>
-            <div>
-              <p>{obj.date}</p>
-              <StP>
-                [{obj.item}] {obj.description}
-              </StP>
-            </div>
-            <StDiv>{obj.amount.toLocaleString()}원</StDiv>
+            <Link to={`/detail/${obj.id}`}>
+              <div>
+                <p>{obj.date}</p>
+                <StP>
+                  [{obj.item}] {obj.description}
+                </StP>
+              </div>
+              <StDiv>{obj.amount.toLocaleString()}원</StDiv>
+            </Link>
           </StList>
         ))}
       </StUl>
