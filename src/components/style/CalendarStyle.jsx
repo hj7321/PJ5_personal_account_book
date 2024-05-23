@@ -1,14 +1,8 @@
 import styled from "styled-components";
 
 export const StSection = styled.section`
-  display: flex;
   flex-wrap: wrap;
-  background-color: aliceblue;
-  border-radius: 10px;
-  margin: 10px;
-  padding: 20px;
   gap: 25px;
-  justify-content: center;
 `;
 
 export const StButton = styled.button`

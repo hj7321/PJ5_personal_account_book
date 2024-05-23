@@ -1,31 +1,9 @@
 import styled from "styled-components";
 
-export const StUl = styled.ul`
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-`;
-
-export const StList = styled.li`
-  display: flex;
-  justify-content: space-between;
-  width: 790px;
-  border-radius: 8px;
-  background-color: #9cffcd;
-  padding: 10px;
-  line-height: 1.5;
-  cursor: pointer;
-  &:hover {
-    transform: scale(1.02);
-    transition-duration: 0.2s;
-  }
-`;
-
 export const StDiv = styled.div`
   display: flex;
   text-align: center;
   align-content: center;
-  /* font-size: 18px; */
   font-weight: bold;
 `;
 

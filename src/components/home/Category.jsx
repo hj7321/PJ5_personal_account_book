@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { StSection } from "../style/CalendarStyle";
-import { StList, StUl, StDiv, StP } from "../style/CategoryStyle";
+import { StDiv, StP } from "../style/CategoryStyle";
 
 const Category = ({ month, expense }) => {
   const filteredExpense = expense.filter(
@@ -10,10 +10,10 @@ const Category = ({ month, expense }) => {
   return (
     <StSection>
       {filteredExpense.length ? "" : "지출이 없습니다."}
-      <StUl>
+      <ul>
         {filteredExpense.map((obj) => (
-          <StList key={obj.id}>
-            <Link to={`/detail/${obj.id}`}>
+          <Link to={`/detail/${obj.id}`}>
+            <li key={obj.id}>
               <div>
                 <p>{obj.date}</p>
                 <StP>
@@ -21,10 +21,10 @@ const Category = ({ month, expense }) => {
                 </StP>
               </div>
               <StDiv>{obj.amount.toLocaleString()}원</StDiv>
-            </Link>
-          </StList>
+            </li>
+          </Link>
         ))}
-      </StUl>
+      </ul>
     </StSection>
   );
 };
