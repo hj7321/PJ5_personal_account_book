@@ -9,10 +9,9 @@ const Calendar = ({ setExpense, expense }) => {
   );
   const monthNumArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
-  const showExpense = (monthNum) => {
+  const changeMonthNum = (monthNum) => {
     setMonth(monthNum);
     localStorage.setItem("month", JSON.stringify(monthNum));
-    setExpense(expense.filter((obj) => obj.date.split("-")[1] == monthNum));
   };
 
   return (
@@ -22,7 +21,7 @@ const Calendar = ({ setExpense, expense }) => {
           <StButton
             key={monthNum}
             onClick={() => {
-              showExpense(monthNum);
+              changeMonthNum(monthNum);
             }}
           >
             {monthNum}월
@@ -33,7 +32,7 @@ const Calendar = ({ setExpense, expense }) => {
         <Graph month={month} expense={expense} />
       </StSection>
       <StSection>
-        <Category expense={expense} />
+        <Category month={month} expense={expense} />
       </StSection>
     </>
   );
