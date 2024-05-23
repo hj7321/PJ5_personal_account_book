@@ -12,8 +12,8 @@ const Category = ({ month, expense }) => {
       {filteredExpense.length ? "" : "지출이 없습니다."}
       <ul>
         {filteredExpense.map((obj) => (
-          <Link to={`/detail/${obj.id}`}>
-            <li key={obj.id}>
+          <Link key={obj.id} to={`/detail/${obj.id}`}>
+            <li>
               <div>
                 <p>{obj.date}</p>
                 <StP>

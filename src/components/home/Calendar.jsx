@@ -7,11 +7,13 @@ const Calendar = ({ setExpense, expense }) => {
   const [month, setMonth] = useState(
     JSON.parse(localStorage.getItem("month")) || 1
   );
+  const [activeMonth, setActiveMonth] = useState(null);
   const monthNumArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
   const changeMonthNum = (monthNum) => {
     setMonth(monthNum);
     localStorage.setItem("month", JSON.stringify(monthNum));
+    setActiveMonth(monthNum);
   };
 
   return (
@@ -20,6 +22,7 @@ const Calendar = ({ setExpense, expense }) => {
         {monthNumArr.map((monthNum) => (
           <StButton
             key={monthNum}
+            $active={activeMonth === monthNum}
             onClick={() => {
               changeMonthNum(monthNum);
             }}

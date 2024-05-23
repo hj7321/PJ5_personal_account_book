@@ -1,6 +1,7 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
 import DetailInput from "./DetailInput";
+import { StButton } from "../style/DetailContentStyle";
 
 const DetailContent = ({ expense, setExpense }) => {
   const navigate = useNavigate();
@@ -29,42 +30,40 @@ const DetailContent = ({ expense, setExpense }) => {
     navigate("/");
   };
 
+  const gotoHomePage = () => {
+    navigate("/");
+  };
+
   return (
     <>
       <DetailInput
         engName={"date"}
         korName={"날짜"}
-        value={date}
+        state={date}
         setState={setDate}
       />
       <DetailInput
         engName={"item"}
         korName={"항목"}
-        value={item}
+        state={item}
         setState={setItem}
       />
       <DetailInput
         engName={"amount"}
         korName={"금액"}
-        value={amount}
+        state={amount}
         setState={setAmount}
       />
       <DetailInput
         engName={"description"}
         korName={"내용"}
-        value={description}
+        state={description}
         setState={setDescription}
       />
       <div>
-        <button onClick={updateExpense}>수정</button>
-        <button onClick={deleteExpense}>삭제</button>
-        <button
-          onClick={() => {
-            navigate("/");
-          }}
-        >
-          뒤로가기
-        </button>
+        <StButton onClick={updateExpense}>수정</StButton>
+        <StButton onClick={deleteExpense}>삭제</StButton>
+        <StButton onClick={gotoHomePage}>뒤로가기</StButton>
       </div>
     </>
   );

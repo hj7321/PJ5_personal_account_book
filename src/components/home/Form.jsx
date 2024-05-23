@@ -1,4 +1,6 @@
-import { StButton, StForm, StDiv } from "../style/FormStyle";
+import { v4 as uuidv4 } from "uuid";
+import { StButton, StForm } from "../style/FormStyle";
+import HomeInput from "./HomeInput";
 
 const Form = ({ setExpense }) => {
   const addExpense = (e) => {
@@ -10,15 +12,19 @@ const Form = ({ setExpense }) => {
     const amount = +data.get("amount");
     const description = data.get("description");
 
-    if (!date) return alert("날짜를 입력해주세요.");
+    const regex =
+      /^(?:(?!0000)\d{4})-(?:(?:0[1-9]|1[0-2]))-(?:(?:0[1-9]|1\d|2[0-8])|(?:29|30)(?!(?:02))|31(?=(?:0[13578]|1[02])))$|^(?:(?:(?!0000)\d{2}(?:0[48]|[2468][048]|[13579][26])|(?:[02468][048]|[13579][26])00)-02-29)$/;
+
+    if (!date.trim()) return alert("날짜를 입력해주세요.");
+    else if (!regex.test(dateString))
+      return alert("날짜 형식은 YYYY-MM-DD로 작성해야 합니다.");
     else if (!item.trim()) return alert("지출 항목을 입력해주세요.");
     else if (!amount) return alert("지출 금액을 입력해주세요.");
-    else if (amount < 0) return alert("알맞은 지출 금액을 입력해주세요.");
+    else if (amount <= 0) return alert("알맞은 지출 금액을 입력해주세요.");
     else if (!description.trim()) return alert("지출 내용을 입력해주세요.");
 
-    // 데이터 추가하기
     const newExpense = {
-      id: crypto.randomUUID(),
+      id: uuidv4(),
       date,
       item,
       amount,
@@ -32,32 +38,18 @@ const Form = ({ setExpense }) => {
 
   return (
     <StForm onSubmit={addExpense}>
-      <StDiv>
-        <label htmlFor="date">날짜</label>
-        <input type="date" id="date" name="date" />
-      </StDiv>
-      <StDiv>
-        <label htmlFor="item">항목</label>
-        <input type="text" id="item" name="item" placeholder="지출 항목" />
-      </StDiv>
-      <StDiv>
-        <label htmlFor="amount">금액</label>
-        <input
-          type="number"
-          id="amount"
-          name="amount"
-          placeholder="지출 금액"
-        />
-      </StDiv>
-      <StDiv>
-        <label htmlFor="description">내용</label>
-        <input
-          type="text"
-          id="description"
-          name="description"
-          placeholder="지출 내용"
-        />
-      </StDiv>
+      <HomeInput engName={"date"} korName={"날짜"} placeholder={"YYYY-MM-DD"} />
+      <HomeInput engName={"item"} korName={"항목"} placeholder={"지출 항목"} />
+      <HomeInput
+        engName={"amount"}
+        korName={"금액"}
+        placeholder={"지출 금액"}
+      />
+      <HomeInput
+        engName={"description"}
+        korName={"내용"}
+        placeholder={"지출 내용"}
+      />
       <StButton type="submit">저장</StButton>
     </StForm>
   );
