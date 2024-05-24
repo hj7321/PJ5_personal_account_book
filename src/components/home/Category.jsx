@@ -9,8 +9,8 @@ const Category = ({ month, expense }) => {
 
   return (
     <StSection>
-      {filteredExpense.length ? "" : "지출이 없습니다."}
       <ul>
+        {filteredExpense.length ? "" : "지출이 없습니다."}
         {filteredExpense.map((obj) => (
           <Link key={obj.id} to={`/detail/${obj.id}`}>
             <li>

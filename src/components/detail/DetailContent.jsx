@@ -1,7 +1,8 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useRef } from "react";
 import DetailInput from "./DetailInput";
-import { StButton } from "../style/DetailContentStyle";
+import { StButton, StDiv } from "../style/DetailContentStyle";
+import validateInput from "../../shared/validateInput";
 
 const DetailContent = ({ expense, setExpense }) => {
   const navigate = useNavigate();
@@ -15,20 +16,29 @@ const DetailContent = ({ expense, setExpense }) => {
   const description = useRef(clickedExpense.description);
 
   const updateExpense = () => {
-    setExpense((prev) =>
-      prev.map((obj) =>
-        obj.id === param.id
-          ? {
-              ...obj,
-              date: date.current.value,
-              item: item.current.value,
-              amount: +amount.current.value,
-              description: description.current.value,
-            }
-          : obj
-      )
+    const message = validateInput(
+      date.current.value,
+      item.current.value,
+      amount.current.value,
+      description.current.value
     );
-    navigate("/");
+
+    if (message === "Passed Test") {
+      setExpense((prev) =>
+        prev.map((obj) =>
+          obj.id === param.id
+            ? {
+                ...obj,
+                date: date.current.value,
+                item: item.current.value,
+                amount: +amount.current.value,
+                description: description.current.value,
+              }
+            : obj
+        )
+      );
+      navigate("/");
+    }
   };
 
   const deleteExpense = () => {
@@ -60,11 +70,17 @@ const DetailContent = ({ expense, setExpense }) => {
         korName={"내용"}
         state={description}
       />
-      <div>
-        <StButton onClick={updateExpense}>수정</StButton>
-        <StButton onClick={deleteExpense}>삭제</StButton>
-        <StButton onClick={gotoHomePage}>뒤로가기</StButton>
-      </div>
+      <StDiv>
+        <StButton $color={"blue"} onClick={updateExpense}>
+          수정
+        </StButton>
+        <StButton $color={"red"} onClick={deleteExpense}>
+          삭제
+        </StButton>
+        <StButton $color={"green"} onClick={gotoHomePage}>
+          뒤로가기
+        </StButton>
+      </StDiv>
     </>
   );
 };
