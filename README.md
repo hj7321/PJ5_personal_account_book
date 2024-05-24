@@ -80,8 +80,25 @@ Router ─┤                       └─ Category
 ### 컴포넌트 구조
 
 ```
-
+        ┌─ HomePage ┌─ Form
+        │           └─ Calendar ┌─ Graph
+Router ─┤                       └─ Category
+        │
+        └─ DetailPage ── DetailContent
 ```
+
+- 컴포넌트 구조는 props-drilling 방식이랑 똑같지만 props를 전달하는 방법이 간소화되었다.
+- props 1: `expense`, `setExpense()`
+- `expense` state의 흐름
+  - `Router`(Context API 생성) -> `Graph`, `Category`(**사용**)
+  - `Router`(Context API 생성) -> `DetailContent`(**사용**)
+- `setExpense()` 함수의 흐름
+  - `Router`(Context API 생성) -> `Form`(**사용**)
+  - `Router`(Context API 생성) -> `DetailContent`(**사용**)
+- props 2: `month`
+  - `month`를 사용하지 않고 전달하는 컴포넌트는 없지만(props-drilling 현상은 없지만) context API 방식을 연습하기 위해서 이 부분도 context API 방식으로 변경했다.
+  - `month` state의 흐름
+    - `Calendar`(**사용** 및 Context API 생성) -> `Graph`, `Category`(**사용**)
 
 ## 3. Redux 방식으로 구현
 

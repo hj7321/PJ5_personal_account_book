@@ -45,7 +45,7 @@ const DetailContent = () => {
   };
 
   const deleteExpense = () => {
-    const result = confirm("정말로 이 항목을 삭제하시겠습니까?");
+    const result = confirm("정말로 이 지출 내역을 삭제하시겠습니까?");
     if (result) {
       setExpense((prev) => prev.filter((obj) => obj.id !== param.id));
       navigate("/");
