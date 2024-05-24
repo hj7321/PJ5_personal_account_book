@@ -25,7 +25,7 @@ const Graph = ({ month, expense }) => {
         {filteredExpense ? totalAmount.toLocaleString() : 0}원
       </StH3>
       {/* 그래프 나타내기 */}
-      <StDiv>
+      <StDiv $margin={filteredExpense.length}>
         {changeArrToItemObj.map((cur) => (
           <p key={cur[0]}>
             {cur[0]}: {cur[1].toLocaleString()}원 (
