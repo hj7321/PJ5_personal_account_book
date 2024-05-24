@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import initialExpense from "../data/dummyData.json";
 import HomePage from "../components/pages/HomePage";
 import DetailPage from "../components/pages/DetailPage";
-import { PageContext } from "../context/PageContext";
+import { ExpenseContext } from "../context/SharedContext";
 
 const Router = () => {
   const [expense, setExpense] = useState(initialExpense);
@@ -14,25 +14,25 @@ const Router = () => {
         <Route
           path="/"
           element={
-            <PageContext.Provider value={{ setExpense, expense }}>
+            <ExpenseContext.Provider value={{ setExpense, expense }}>
               <HomePage />
-            </PageContext.Provider>
+            </ExpenseContext.Provider>
           }
         />
         <Route
           path="detail"
           element={
-            <PageContext.Provider value={{ setExpense, expense }}>
+            <ExpenseContext.Provider value={{ setExpense, expense }}>
               <DetailPage />
-            </PageContext.Provider>
+            </ExpenseContext.Provider>
           }
         />
         <Route
           path="detail/:id"
           element={
-            <PageContext.Provider value={{ setExpense, expense }}>
+            <ExpenseContext.Provider value={{ setExpense, expense }}>
               <DetailPage />
-            </PageContext.Provider>
+            </ExpenseContext.Provider>
           }
         />
       </Routes>

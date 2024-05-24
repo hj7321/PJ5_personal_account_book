@@ -3,15 +3,15 @@ import { useContext, useEffect, useRef } from "react";
 import DetailInput from "./DetailInput";
 import { StButton, StDiv } from "../style/DetailContentStyle";
 import validateInput from "../../shared/validateInput";
-import { PageContext } from "../../context/PageContext";
+import { ExpenseContext } from "../../context/SharedContext";
 
 const DetailContent = () => {
-  const data = useContext(PageContext);
+  const { expense, setExpense } = useContext(ExpenseContext);
 
   const navigate = useNavigate();
 
   const param = useParams();
-  const clickedExpense = data.expense.find((obj) => obj.id === param.id);
+  const clickedExpense = expense.find((obj) => obj.id === param.id);
 
   const date = useRef(clickedExpense.date);
   const item = useRef(clickedExpense.item);
@@ -27,7 +27,7 @@ const DetailContent = () => {
     );
 
     if (message === "Passed Test") {
-      data.setExpense((prev) =>
+      setExpense((prev) =>
         prev.map((obj) =>
           obj.id === param.id
             ? {
@@ -47,7 +47,7 @@ const DetailContent = () => {
   const deleteExpense = () => {
     const result = confirm("정말로 이 항목을 삭제하시겠습니까?");
     if (result) {
-      data.setExpense((prev) => prev.filter((obj) => obj.id !== param.id));
+      setExpense((prev) => prev.filter((obj) => obj.id !== param.id));
       navigate("/");
     }
   };

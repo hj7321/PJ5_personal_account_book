@@ -1,15 +1,15 @@
 import { Link } from "react-router-dom";
 import { StSection } from "../style/CalendarStyle";
 import { StDiv, StP } from "../style/CategoryStyle";
-import { MonthContext, PageContext } from "../../context/PageContext";
+import { MonthContext, ExpenseContext } from "../../context/SharedContext";
 import { useContext } from "react";
 
 const Category = () => {
-  const data = useContext(PageContext);
-  const monthData = useContext(MonthContext);
+  const { expense } = useContext(ExpenseContext);
+  const { month } = useContext(MonthContext);
 
-  const filteredExpense = data.expense.filter(
-    (obj) => obj.date.split("-")[1] == monthData.month
+  const filteredExpense = expense.filter(
+    (obj) => obj.date.split("-")[1] == month
   );
 
   return (
