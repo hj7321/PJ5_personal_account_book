@@ -15,5 +15,5 @@ export const StDiv = styled.div`
   flex-wrap: wrap;
   gap: 20px;
   justify-content: center;
-  margin: 20px;
+  margin: ${(props) => (props.$margin ? 20 : 0)}px;
 `;
