@@ -1,14 +1,17 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { useEffect, useRef } from "react";
+import { useContext, useEffect, useRef } from "react";
 import DetailInput from "./DetailInput";
 import { StButton, StDiv } from "../style/DetailContentStyle";
 import validateInput from "../../shared/validateInput";
+import { PageContext } from "../../context/PageContext";
 
-const DetailContent = ({ expense, setExpense }) => {
+const DetailContent = () => {
+  const data = useContext(PageContext);
+
   const navigate = useNavigate();
 
   const param = useParams();
-  const clickedExpense = expense.find((obj) => obj.id === param.id);
+  const clickedExpense = data.expense.find((obj) => obj.id === param.id);
 
   const date = useRef(clickedExpense.date);
   const item = useRef(clickedExpense.item);
@@ -24,7 +27,7 @@ const DetailContent = ({ expense, setExpense }) => {
     );
 
     if (message === "Passed Test") {
-      setExpense((prev) =>
+      data.setExpense((prev) =>
         prev.map((obj) =>
           obj.id === param.id
             ? {
@@ -44,7 +47,7 @@ const DetailContent = ({ expense, setExpense }) => {
   const deleteExpense = () => {
     const result = confirm("정말로 이 항목을 삭제하시겠습니까?");
     if (result) {
-      setExpense((prev) => prev.filter((obj) => obj.id !== param.id));
+      data.setExpense((prev) => prev.filter((obj) => obj.id !== param.id));
       navigate("/");
     }
   };

@@ -2,8 +2,12 @@ import { v4 as uuidv4 } from "uuid";
 import { StButton, StForm } from "../style/FormStyle";
 import HomeInput from "./HomeInput";
 import validateInput from "../../shared/validateInput";
+import { PageContext } from "../../context/PageContext";
+import { useContext } from "react";
 
-const Form = ({ setExpense }) => {
+const Form = () => {
+  const contextData = useContext(PageContext);
+
   const addExpense = (e) => {
     e.preventDefault();
 
@@ -24,7 +28,7 @@ const Form = ({ setExpense }) => {
         description,
       };
 
-      setExpense((expense) => [...expense, newExpense]);
+      contextData.setExpense((expense) => [...expense, newExpense]);
 
       e.target.reset();
     }

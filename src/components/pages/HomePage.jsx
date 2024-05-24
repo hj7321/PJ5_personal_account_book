@@ -1,11 +1,11 @@
 import Form from "../home/Form";
 import Calendar from "../home/Calendar";
 
-const HomePage = ({ setExpense, expense }) => {
+const HomePage = () => {
   return (
     <>
-      <Form setExpense={setExpense} />
-      <Calendar expense={expense} />
+      <Form />
+      <Calendar />
     </>
   );
 };

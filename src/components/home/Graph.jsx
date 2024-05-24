@@ -1,15 +1,21 @@
+import { useContext } from "react";
+import { MonthContext, PageContext } from "../../context/PageContext";
 import { StSection } from "../style/CalendarStyle";
 import { StH3 } from "../style/GraphStyle";
 
-const Graph = ({ month, expense }) => {
-  const filteredExpense = expense.filter(
-    (obj) => obj.date.split("-")[1] == month
+const Graph = ({ month }) => {
+  const data = useContext(PageContext);
+  const monthData = useContext(MonthContext);
+  console.log(monthData);
+
+  const filteredExpense = data.expense.filter(
+    (obj) => obj.date.split("-")[1] == monthData.month
   );
 
   return (
     <StSection>
       <StH3>
-        {month}월 총 지출: 💸
+        {monthData.month}월 총 지출: 💸
         {filteredExpense
           ? filteredExpense
               .reduce((amount, obj) => {

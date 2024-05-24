@@ -1,10 +1,10 @@
 import DetailContent from "../detail/DetailContent";
 import { StSection } from "../style/DetailContentStyle";
 
-const DetailPage = ({ expense, setExpense }) => {
+const DetailPage = () => {
   return (
     <StSection>
-      <DetailContent expense={expense} setExpense={setExpense} />
+      <DetailContent />
     </StSection>
   );
 };

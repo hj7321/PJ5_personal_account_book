@@ -2,8 +2,9 @@ import { StSection, StButton } from "../style/CalendarStyle";
 import Graph from "./Graph";
 import Category from "./Category";
 import { useState } from "react";
+import { MonthContext } from "../../context/PageContext";
 
-const Calendar = ({ expense }) => {
+const Calendar = () => {
   const [month, setMonth] = useState(
     JSON.parse(localStorage.getItem("month")) || 1
   );
@@ -29,8 +30,10 @@ const Calendar = ({ expense }) => {
           </StButton>
         ))}
       </StSection>
-      <Graph month={month} expense={expense} />
-      <Category month={month} expense={expense} />
+      <MonthContext.Provider>
+        <Graph value={{ month }} />
+        <Category value={{ month }} />
+      </MonthContext.Provider>
     </>
   );
 };
