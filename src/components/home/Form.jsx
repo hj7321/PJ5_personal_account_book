@@ -17,7 +17,7 @@ const Form = ({ setExpense }) => {
 
     if (!date.trim()) return alert("날짜를 입력해주세요.");
     else if (!regex.test(dateString))
-      return alert("날짜 형식은 YYYY-MM-DD로 작성해야 합니다.");
+      return alert("알맞은 날짜 형식을 입력해주세요.");
     else if (!item.trim()) return alert("지출 항목을 입력해주세요.");
     else if (!amount) return alert("지출 금액을 입력해주세요.");
     else if (amount <= 0) return alert("알맞은 지출 금액을 입력해주세요.");

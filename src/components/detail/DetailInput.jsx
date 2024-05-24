@@ -1,14 +1,13 @@
 import { StDiv } from "../style/FormStyle";
 
-const DetailInput = ({ engName, korName, state, setState }) => {
+const DetailInput = ({ engName, korName, state }) => {
   return (
     <StDiv>
       <label htmlFor={engName}>{korName}</label>
       <input
         type={engName === "amount" ? "number" : "text"}
         id={engName}
-        value={state}
-        onChange={(e) => setState(e.target.value)}
+        ref={state}
       />
     </StDiv>
   );

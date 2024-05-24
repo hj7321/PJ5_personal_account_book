@@ -3,11 +3,11 @@ import Graph from "./Graph";
 import Category from "./Category";
 import { useState } from "react";
 
-const Calendar = ({ setExpense, expense }) => {
+const Calendar = ({ expense }) => {
   const [month, setMonth] = useState(
     JSON.parse(localStorage.getItem("month")) || 1
   );
-  const [activeMonth, setActiveMonth] = useState(null);
+  const [activeMonth, setActiveMonth] = useState(month);
   const monthNumArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
   const changeMonthNum = (monthNum) => {

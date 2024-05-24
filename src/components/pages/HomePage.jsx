@@ -5,7 +5,7 @@ const HomePage = ({ setExpense, expense }) => {
   return (
     <>
       <Form setExpense={setExpense} />
-      <Calendar setExpense={setExpense} expense={expense} />
+      <Calendar expense={expense} />
     </>
   );
 };
