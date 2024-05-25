@@ -8,7 +8,7 @@ const validateInput = (date, item, amount, description) => {
   else if (!amount) return alert("지출 금액을 입력해주세요.");
   else if (amount <= 0) return alert("알맞은 지출 금액을 입력해주세요.");
   else if (!description.trim()) return alert("지출 내용을 입력해주세요.");
-  return "Passed Test";
+  return true;
 };
 
 export default validateInput;

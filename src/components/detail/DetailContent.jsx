@@ -19,14 +19,14 @@ const DetailContent = () => {
   const description = useRef(clickedExpense.description);
 
   const updateExpense = () => {
-    const message = validateInput(
-      date.current.value,
-      item.current.value,
-      amount.current.value,
-      description.current.value
-    );
-
-    if (message === "Passed Test") {
+    if (
+      validateInput(
+        date.current.value,
+        item.current.value,
+        amount.current.value,
+        description.current.value
+      )
+    ) {
       setExpense((prev) =>
         prev.map((obj) =>
           obj.id === param.id
