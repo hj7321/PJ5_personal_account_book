@@ -17,9 +17,7 @@ const Form = () => {
     const amount = +data.get("amount");
     const description = data.get("description");
 
-    const message = validateInput(date, item, amount, description);
-
-    if (message === "Passed Test") {
+    if (validateInput(date, item, amount, description)) {
       const newExpense = {
         id: uuidv4(),
         date,
