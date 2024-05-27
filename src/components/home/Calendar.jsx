@@ -1,7 +1,7 @@
 import { StSection, StButton } from "../style/CalendarStyle";
 import Graph from "./Graph";
 import Category from "./Category";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { MonthContext } from "../../context/SharedContext";
 
 const Calendar = () => {
@@ -12,8 +12,11 @@ const Calendar = () => {
 
   const changeMonthNum = (monthNum) => {
     setMonth(monthNum);
-    localStorage.setItem("month", JSON.stringify(monthNum));
   };
+
+  useEffect(() => {
+    localStorage.setItem("month", JSON.stringify(month));
+  }, [month]);
 
   return (
     <>
