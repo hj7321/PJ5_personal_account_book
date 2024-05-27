@@ -105,5 +105,13 @@ Router ─┤                       └─ Category
 ### 컴포넌트 구조
 
 ```
-
+        ┌─ HomePage ┌─ Form
+        │           ├─ Calendar
+Router ─┤           ├─ Graph
+        │           └─ Category
+        │
+        └─ DetailPage ── DetailContent
 ```
+
+- 컴포넌트
+- 일반 리덕스 방식(Ducks 패턴)으로 구현 후 RTK(Redux ToolKit) 방식(Flux 패턴)으로 구현했다.
