@@ -22,7 +22,7 @@ const Graph = ({ month, expense }) => {
     <StSection>
       <StH3>
         {month}월 총 지출: 💸
-        {filteredExpense ? totalAmount.toLocaleString() : 0}원
+        {filteredExpense.length ? totalAmount.toLocaleString() : 0}원
       </StH3>
       {/* 그래프 나타내기 */}
       <StDiv $margin={filteredExpense.length}>
