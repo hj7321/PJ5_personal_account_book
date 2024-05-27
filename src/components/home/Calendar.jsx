@@ -1,7 +1,7 @@
 import { StSection, StButton } from "../style/CalendarStyle";
 import Graph from "./Graph";
 import Category from "./Category";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Calendar = ({ expense }) => {
   const [month, setMonth] = useState(
@@ -11,8 +11,11 @@ const Calendar = ({ expense }) => {
 
   const changeMonthNum = (monthNum) => {
     setMonth(monthNum);
-    localStorage.setItem("month", JSON.stringify(monthNum));
   };
+
+  useEffect(() => {
+    localStorage.setItem("month", JSON.stringify(month));
+  }, [month]);
 
   return (
     <>
