@@ -15,10 +15,6 @@ const Router = () => {
           element={<HomePage setExpense={setExpense} expense={expense} />}
         />
         <Route
-          path="detail"
-          element={<DetailPage setExpense={setExpense} expense={expense} />}
-        />
-        <Route
           path="detail/:id"
           element={<DetailPage setExpense={setExpense} expense={expense} />}
         />
