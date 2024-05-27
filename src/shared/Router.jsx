@@ -20,14 +20,6 @@ const Router = () => {
           }
         />
         <Route
-          path="detail"
-          element={
-            <ExpenseContext.Provider value={{ setExpense, expense }}>
-              <DetailPage />
-            </ExpenseContext.Provider>
-          }
-        />
-        <Route
           path="detail/:id"
           element={
             <ExpenseContext.Provider value={{ setExpense, expense }}>
