@@ -26,7 +26,7 @@ const Form = () => {
         description,
       };
 
-      dispatch(addExpense({ newExpense }));
+      dispatch(addExpense(newExpense));
 
       e.target.reset();
     }

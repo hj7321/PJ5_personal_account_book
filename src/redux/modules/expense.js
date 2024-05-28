@@ -30,16 +30,17 @@ const expense = (state = initialState, action) => {
         expense: [...state.expense, action.payload],
       };
     case UPDATE_EXPENSE:
+      const { date, item, amount, description } = action.payload;
       return {
         ...state,
         expense: state.expense.map((obj) =>
           obj.id === action.payload.id
             ? {
                 ...obj,
-                date: date.current.value,
-                item: item.current.value,
-                amount: +amount.current.value,
-                description: description.current.value,
+                date,
+                item,
+                amount: +amount,
+                description,
               }
             : obj
         ),

@@ -29,7 +29,15 @@ const DetailContent = () => {
         description.current.value
       )
     ) {
-      dispatch(updateExpense({ id }));
+      dispatch(
+        updateExpense({
+          id,
+          date: date.current.value,
+          item: item.current.value,
+          amount: amount.current.value,
+          description: description.current.value,
+        })
+      );
       navigate("/");
     }
   };

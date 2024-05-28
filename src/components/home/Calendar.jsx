@@ -21,7 +21,7 @@ const Calendar = () => {
             key={monthNum}
             $active={month === monthNum}
             onClick={() => {
-              dispatch(changeMonth({ monthNum }));
+              dispatch(changeMonth(monthNum));
             }}
           >
             {monthNum}월
