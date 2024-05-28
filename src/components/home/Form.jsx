@@ -3,7 +3,7 @@ import { StButton, StForm } from "../style/FormStyle";
 import HomeInput from "./HomeInput";
 import validateInput from "../../shared/validateInput";
 import { useDispatch } from "react-redux";
-import { addExpense } from "./../../redux/modules/expense";
+import { addExpense } from "../../redux/slices/expenseSlice";
 
 const Form = () => {
   const dispatch = useDispatch();

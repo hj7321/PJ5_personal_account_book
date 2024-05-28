@@ -4,7 +4,7 @@ import DetailInput from "./DetailInput";
 import { StButton, StDiv } from "../style/DetailContentStyle";
 import validateInput from "../../shared/validateInput";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteExpense, updateExpense } from "../../redux/modules/expense";
+import { deleteExpense, updateExpense } from "../../redux/slices/expenseSlice";
 
 const DetailContent = () => {
   const { expense } = useSelector((state) => state.expense);

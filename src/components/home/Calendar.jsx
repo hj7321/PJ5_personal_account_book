@@ -1,7 +1,7 @@
 import { StSection, StButton } from "../style/CalendarStyle";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { changeMonth } from "../../redux/modules/month";
+import { changeMonth } from "../../redux/slices/monthSlice";
 
 const Calendar = () => {
   const { month } = useSelector((state) => state.month);

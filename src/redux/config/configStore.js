@@ -1,11 +1,12 @@
-import { combineReducers, createStore } from "redux";
-import expense from "../modules/expense";
-import month from "../modules/month";
+import { configureStore } from "@reduxjs/toolkit";
+import expenseSlice from "../slices/expenseSlice";
+import monthSlice from "../slices/monthSlice";
 
-const rootReducer = combineReducers({
-  expense,
-  month,
+const store = configureStore({
+  reducer: {
+    expense: expenseSlice,
+    month: monthSlice,
+  },
 });
-const store = createStore(rootReducer);
 
 export default store;
