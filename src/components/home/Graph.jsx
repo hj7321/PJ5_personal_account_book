@@ -1,11 +1,10 @@
-import { useContext } from "react";
-import { MonthContext, ExpenseContext } from "../../context/SharedContext";
 import { StH3, StSection } from "../style/GraphStyle";
 import { StDiv } from "./../style/GraphStyle";
+import { useSelector } from "react-redux";
 
 const Graph = () => {
-  const { expense } = useContext(ExpenseContext);
-  const { month } = useContext(MonthContext);
+  const { expense } = useSelector((state) => state.expense);
+  const { month } = useSelector((state) => state.month);
 
   const filteredExpense = expense.filter(
     (obj) => obj.date.split("-")[1] == month

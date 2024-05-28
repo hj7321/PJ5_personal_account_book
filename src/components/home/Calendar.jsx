@@ -1,18 +1,16 @@
 import { StSection, StButton } from "../style/CalendarStyle";
 import Graph from "./Graph";
 import Category from "./Category";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { MonthContext } from "../../context/SharedContext";
+import { useDispatch, useSelector } from "react-redux";
+import { changeMonth } from "../../redux/modules/month";
 
 const Calendar = () => {
-  const [month, setMonth] = useState(
-    JSON.parse(localStorage.getItem("month")) || 1
-  );
-  const monthNumArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+  const { month } = useSelector((state) => state.month);
+  const dispatch = useDispatch();
 
-  const changeMonthNum = (monthNum) => {
-    setMonth(monthNum);
-  };
+  const monthNumArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
   useEffect(() => {
     localStorage.setItem("month", JSON.stringify(month));
@@ -26,17 +24,15 @@ const Calendar = () => {
             key={monthNum}
             $active={month === monthNum}
             onClick={() => {
-              changeMonthNum(monthNum);
+              dispatch(changeMonth({ monthNum }));
             }}
           >
             {monthNum}월
           </StButton>
         ))}
       </StSection>
-      <MonthContext.Provider value={{ month }}>
-        <Graph />
-        <Category />
-      </MonthContext.Provider>
+      <Graph />
+      <Category />
     </>
   );
 };

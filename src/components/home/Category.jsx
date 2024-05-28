@@ -1,12 +1,11 @@
 import { Link } from "react-router-dom";
 import { StSection } from "../style/CalendarStyle";
 import { StDiv, StP } from "../style/CategoryStyle";
-import { MonthContext, ExpenseContext } from "../../context/SharedContext";
-import { useContext } from "react";
+import { useSelector } from "react-redux";
 
 const Category = () => {
-  const { expense } = useContext(ExpenseContext);
-  const { month } = useContext(MonthContext);
+  const { expense } = useSelector((state) => state.expense);
+  const { month } = useSelector((state) => state.month);
 
   const filteredExpense = expense.filter(
     (obj) => obj.date.split("-")[1] == month
