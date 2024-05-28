@@ -1,13 +1,54 @@
-import initialExpense from "../data/dummyData.json";
+import initialExpense from "../../data/dummyData.json";
 
 // 초기 상태값
 const initialState = {
   expense: initialExpense,
 };
 
+// Action Value
+const ADD_EXPENSE = "ADD_EXPENSE";
+const UPDATE_EXPENSE = "UPDATE_EXPENSE";
+const DELETE_EXPENSE = "DELETE_EXPENSE";
+
+// Action Creator
+export const addExpense = (payload) => {
+  return { type: ADD_EXPENSE, payload };
+};
+export const updateExpense = (payload) => {
+  return { type: UPDATE_EXPENSE, payload };
+};
+export const deleteExpense = (payload) => {
+  return { type: DELETE_EXPENSE, payload };
+};
+
 // 리듀서
 const expense = (state = initialState, action) => {
   switch (action.type) {
+    case ADD_EXPENSE:
+      return {
+        ...state,
+        expense: [...state.expense, action.payload],
+      };
+    case UPDATE_EXPENSE:
+      return {
+        ...state,
+        expense: state.expense.map((obj) =>
+          obj.id === action.payload.id
+            ? {
+                ...obj,
+                date: date.current.value,
+                item: item.current.value,
+                amount: +amount.current.value,
+                description: description.current.value,
+              }
+            : obj
+        ),
+      };
+    case DELETE_EXPENSE:
+      return {
+        ...state,
+        expense: state.expense.filter((obj) => obj.id !== action.payload.id),
+      };
     default:
       return state;
   }

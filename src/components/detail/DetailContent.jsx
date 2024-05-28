@@ -1,13 +1,15 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { useContext, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import DetailInput from "./DetailInput";
 import { StButton, StDiv } from "../style/DetailContentStyle";
 import validateInput from "../../shared/validateInput";
-import { ExpenseContext } from "../../context/SharedContext";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteExpense, updateExpense } from "../../redux/modules/expense";
 
 const DetailContent = () => {
-  const { expense, setExpense } = useContext(ExpenseContext);
+  const { expense } = useSelector((state) => state.expense);
 
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const param = useParams();
@@ -18,7 +20,7 @@ const DetailContent = () => {
   const amount = useRef(clickedExpense.amount);
   const description = useRef(clickedExpense.description);
 
-  const updateExpense = () => {
+  const onUpdateHandler = (id) => {
     if (
       validateInput(
         date.current.value,
@@ -27,27 +29,15 @@ const DetailContent = () => {
         description.current.value
       )
     ) {
-      setExpense((prev) =>
-        prev.map((obj) =>
-          obj.id === param.id
-            ? {
-                ...obj,
-                date: date.current.value,
-                item: item.current.value,
-                amount: +amount.current.value,
-                description: description.current.value,
-              }
-            : obj
-        )
-      );
+      dispatch(updateExpense({ id }));
       navigate("/");
     }
   };
 
-  const deleteExpense = () => {
+  const onDeleteHandler = (id) => {
     const result = confirm("정말로 이 지출 내역을 삭제하시겠습니까?");
     if (result) {
-      setExpense((prev) => prev.filter((obj) => obj.id !== param.id));
+      dispatch(deleteExpense({ id }));
       navigate("/");
     }
   };
@@ -74,10 +64,10 @@ const DetailContent = () => {
         state={description}
       />
       <StDiv>
-        <StButton $color={"blue"} onClick={updateExpense}>
+        <StButton $color={"blue"} onClick={() => onUpdateHandler(param.id)}>
           수정
         </StButton>
-        <StButton $color={"red"} onClick={deleteExpense}>
+        <StButton $color={"red"} onClick={() => onDeleteHandler(param.id)}>
           삭제
         </StButton>
         <StButton $color={"green"} onClick={gotoHomePage}>

@@ -2,13 +2,13 @@ import { v4 as uuidv4 } from "uuid";
 import { StButton, StForm } from "../style/FormStyle";
 import HomeInput from "./HomeInput";
 import validateInput from "../../shared/validateInput";
-import { ExpenseContext } from "../../context/SharedContext";
-import { useContext } from "react";
+import { useDispatch } from "react-redux";
+import { addExpense } from "./../../redux/modules/expense";
 
 const Form = () => {
-  const { setExpense } = useContext(ExpenseContext);
+  const dispatch = useDispatch();
 
-  const addExpense = (e) => {
+  const onAddHandler = (e) => {
     e.preventDefault();
 
     const data = new FormData(e.target);
@@ -26,14 +26,14 @@ const Form = () => {
         description,
       };
 
-      setExpense((expense) => [...expense, newExpense]);
+      dispatch(addExpense({ newExpense }));
 
       e.target.reset();
     }
   };
 
   return (
-    <StForm onSubmit={addExpense}>
+    <StForm onSubmit={onAddHandler}>
       <HomeInput engName={"date"} korName={"날짜"} placeholder={"YYYY-MM-DD"} />
       <HomeInput engName={"item"} korName={"항목"} placeholder={"지출 항목"} />
       <HomeInput

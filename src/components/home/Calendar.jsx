@@ -1,8 +1,5 @@
 import { StSection, StButton } from "../style/CalendarStyle";
-import Graph from "./Graph";
-import Category from "./Category";
 import { useEffect } from "react";
-import { MonthContext } from "../../context/SharedContext";
 import { useDispatch, useSelector } from "react-redux";
 import { changeMonth } from "../../redux/modules/month";
 
@@ -31,8 +28,6 @@ const Calendar = () => {
           </StButton>
         ))}
       </StSection>
-      <Graph />
-      <Category />
     </>
   );
 };
