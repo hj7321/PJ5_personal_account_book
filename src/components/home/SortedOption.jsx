@@ -1,21 +1,15 @@
-import { useState } from "react";
-
 const SortedOption = ({ filteredExpense, setFilteredExpense }) => {
-  const [sortBy, setSortBy] = useState("date");
-  let sortedExpense = [];
-
   const handleSortChange = (e) => {
     const sortedValue = e.target.value;
-    setSortBy(sortedValue);
-    // console.log("sortedValue", sortedValue);
-    // console.log("sortBy", sortBy);
 
     if (sortedValue === "date") sortByDate();
     else if (sortedValue === "item") sortByItem();
     else if (sortedValue === "amount") sortByAmount();
   };
 
-  // 시간순 정렬
+  let sortedExpense = [];
+
+  // 날짜순 정렬
   const sortByDate = () => {
     sortedExpense = [];
     const timeSortedExpense = filteredExpense
@@ -42,7 +36,6 @@ const SortedOption = ({ filteredExpense, setFilteredExpense }) => {
         if (a[0] !== b[0]) return a[0].localeCompare(b[0]);
         else if (a[1] !== b[1]) return a[1].localeCompare(b[1]);
       });
-    console.log(itemSortedExpense);
     for (let i = 0; i < itemSortedExpense.length; i++) {
       filteredExpense.forEach((obj) => {
         if (obj.id === itemSortedExpense[i][2]) sortedExpense.push(obj);
@@ -71,8 +64,8 @@ const SortedOption = ({ filteredExpense, setFilteredExpense }) => {
   };
 
   return (
-    <select value={sortBy} onChange={handleSortChange}>
-      <option value="date">시간순</option>
+    <select onChange={handleSortChange}>
+      <option value="date">날짜순</option>
       <option value="item">항목순</option>
       <option value="amount">가격순</option>
     </select>
