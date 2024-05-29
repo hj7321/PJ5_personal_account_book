@@ -7,8 +7,8 @@ const SortedOption = ({ filteredExpense, setFilteredExpense }) => {
   const handleSortChange = (e) => {
     const sortedValue = e.target.value;
     setSortBy(sortedValue);
-    console.log("sortedValue", sortedValue);
-    console.log("sortBy", sortBy);
+    // console.log("sortedValue", sortedValue);
+    // console.log("sortBy", sortBy);
 
     if (sortedValue === "date") sortByDate();
     else if (sortedValue === "item") sortByItem();

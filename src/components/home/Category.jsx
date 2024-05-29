@@ -3,15 +3,26 @@ import { StSection } from "../style/CalendarStyle";
 import { StDiv, StP } from "../style/CategoryStyle";
 import { useSelector } from "react-redux";
 import SortedOption from "./SortedOption";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Category = () => {
   const { expense } = useSelector((state) => state.expense);
   const { month } = useSelector((state) => state.month);
 
-  const [filteredExpense, setFilteredExpense] = useState(() => {
+  // console.log("expense: ", expense);
+  // console.log("month: ", month);
+
+  const changeExpense = () => {
     return expense.filter((obj) => obj.date.split("-")[1] == month);
-  });
+  };
+
+  const [filteredExpense, setFilteredExpense] = useState(changeExpense);
+
+  useEffect(() => {
+    setFilteredExpense(changeExpense);
+  }, [expense, month]);
+
+  // console.log("filteredExpense: ", filteredExpense);
 
   return (
     <StSection>
