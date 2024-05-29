@@ -2,19 +2,28 @@ import { Link } from "react-router-dom";
 import { StSection } from "../style/CalendarStyle";
 import { StDiv, StP } from "../style/CategoryStyle";
 import { useSelector } from "react-redux";
+import SortedOption from "./SortedOption";
+import { useState } from "react";
 
 const Category = () => {
   const { expense } = useSelector((state) => state.expense);
   const { month } = useSelector((state) => state.month);
 
-  const filteredExpense = expense.filter(
-    (obj) => obj.date.split("-")[1] == month
-  );
+  const [filteredExpense, setFilteredExpense] = useState(() => {
+    return expense.filter((obj) => obj.date.split("-")[1] == month);
+  });
 
   return (
     <StSection>
       <ul>
-        {filteredExpense.length ? "" : "지출이 없습니다."}
+        {filteredExpense.length ? (
+          <SortedOption
+            filteredExpense={filteredExpense}
+            setFilteredExpense={setFilteredExpense}
+          />
+        ) : (
+          "지출이 없습니다."
+        )}
         {filteredExpense.map((obj) => (
           <Link key={obj.id} to={`/detail/${obj.id}`}>
             <li>

@@ -8,6 +8,7 @@ const GlobalStyle = createGlobalStyle`
     min-width: 600px;
     margin: 0 auto;
     background-color: pink;
+    display: grid;
   }
   a {
     text-decoration: none;
@@ -30,6 +31,7 @@ const GlobalStyle = createGlobalStyle`
     margin: 10px;
     padding: 20px;
     justify-content: center;
+    width: 840px;
   }
   ul {
     display: flex;
@@ -46,6 +48,11 @@ const GlobalStyle = createGlobalStyle`
     padding: 10px;
     line-height: 1.5;
     cursor: pointer;
+  }
+  select {
+    width: 75px;
+    height: 30px;
+    font-size: 14px;
   }
   li:hover {
     transform: scale(1.02);
