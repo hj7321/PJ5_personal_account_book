@@ -118,7 +118,24 @@ Router ─┤                       └─ Category
 
 - 바뀐 컴포넌트 구조
 
-  - `MonthContext.jsx` 파일에서 Provider를 사용했으므로, 컴포넌트 구조를
+  ```
+          ┌─ HomePage ┌─ Form
+          │           ├─ Calendar
+  Router ─┤           ├─ Graph
+          │           └─ Category
+          │
+          └─ DetailPage ── DetailContent
+  ```
+
+  - `MonthContext.jsx` 파일에서 Provider를 사용하는 과정까지 마쳤으므로, `HomePage` 컴포넌트에서 `Calendar`, `Graph`, `Category` 컴포넌트를 `<MonthProvider>`로 다음과 같이 감싸주면 된다.
+    ```jsx
+    <MonthProvider>
+      <Calendar />
+      <Graph />
+      <Category />
+    </MonthProvider>
+    ```
+  - `Calendar` 컴포넌트의 자식 컴포넌트였던 `Graph`와 `Category` 컴포넌트를 `HomePage` 컴포넌트의 자식 컴포넌트가 되도록 옮겼다.
 
 ## 3. Redux 방식으로 구현
 
