@@ -47,7 +47,7 @@ const Graph = () => {
         {month}월 총 지출: 💸
         {filteredExpense.length ? totalAmount.toLocaleString() : 0}원
       </StH3>
-      <GraphContainer $margin={filteredExpense.length}>
+      <GraphContainer $length={filteredExpense.length}>
         {top4Items.map(([item, amount], index) => {
           const percentage = ((amount / totalAmount) * 100).toFixed(2);
           return (
@@ -61,7 +61,7 @@ const Graph = () => {
           />
         )}
       </GraphContainer>
-      <SummaryContainer $margin={filteredExpense.length}>
+      <SummaryContainer $length={filteredExpense.length}>
         {top4Items.map(([item, amount], index) => {
           const percentage = ((amount / totalAmount) * 100).toFixed(2);
           return (
