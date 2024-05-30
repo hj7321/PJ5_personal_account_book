@@ -1,11 +1,14 @@
 import Form from "../home/Form";
 import Calendar from "../home/Calendar";
+import MonthProvider from "../../context/MonthContext";
 
 const HomePage = () => {
   return (
     <>
       <Form />
-      <Calendar />
+      <MonthProvider>
+        <Calendar />
+      </MonthProvider>
     </>
   );
 };

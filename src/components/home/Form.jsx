@@ -2,7 +2,7 @@ import { v4 as uuidv4 } from "uuid";
 import { StButton, StForm } from "../style/FormStyle";
 import HomeInput from "./HomeInput";
 import validateInput from "../../shared/validateInput";
-import { ExpenseContext } from "../../context/SharedContext";
+import { ExpenseContext } from "../../context/ExpenseContext";
 import { useContext } from "react";
 
 const Form = () => {

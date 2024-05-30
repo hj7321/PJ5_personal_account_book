@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 import { StSection } from "../style/CalendarStyle";
 import { StDiv, StP } from "../style/CategoryStyle";
-import { MonthContext, ExpenseContext } from "../../context/SharedContext";
+import { ExpenseContext } from "../../context/ExpenseContext";
 import { useContext } from "react";
+import { MonthContext } from "./../../context/MonthContext";
 
 const Category = () => {
   const { expense } = useContext(ExpenseContext);

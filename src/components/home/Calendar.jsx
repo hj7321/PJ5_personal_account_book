@@ -1,13 +1,12 @@
 import { StSection, StButton } from "../style/CalendarStyle";
 import Graph from "./Graph";
 import Category from "./Category";
-import { useEffect, useState } from "react";
-import { MonthContext } from "../../context/SharedContext";
+import { useContext, useEffect } from "react";
+import MonthProvider, { MonthContext } from "../../context/MonthContext";
 
 const Calendar = () => {
-  const [month, setMonth] = useState(
-    JSON.parse(localStorage.getItem("month")) || 1
-  );
+  const { month, setMonth } = useContext(MonthContext);
+
   const monthNumArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
   const changeMonthNum = (monthNum) => {
@@ -33,10 +32,8 @@ const Calendar = () => {
           </StButton>
         ))}
       </StSection>
-      <MonthContext.Provider value={{ month }}>
-        <Graph />
-        <Category />
-      </MonthContext.Provider>
+      <Graph />
+      <Category />
     </>
   );
 };

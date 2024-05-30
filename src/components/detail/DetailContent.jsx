@@ -3,7 +3,7 @@ import { useContext, useEffect, useRef } from "react";
 import DetailInput from "./DetailInput";
 import { StButton, StDiv } from "../style/DetailContentStyle";
 import validateInput from "../../shared/validateInput";
-import { ExpenseContext } from "../../context/SharedContext";
+import { ExpenseContext } from "../../context/ExpenseContext";
 
 const DetailContent = () => {
   const { expense, setExpense } = useContext(ExpenseContext);

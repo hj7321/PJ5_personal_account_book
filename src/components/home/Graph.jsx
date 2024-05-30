@@ -1,7 +1,8 @@
 import { useContext } from "react";
-import { MonthContext, ExpenseContext } from "../../context/SharedContext";
+import { ExpenseContext } from "../../context/ExpenseContext";
 import { StH3, StSection } from "../style/GraphStyle";
 import { StDiv } from "./../style/GraphStyle";
+import { MonthContext } from "../../context/MonthContext";
 
 const Graph = () => {
   const { expense } = useContext(ExpenseContext);
