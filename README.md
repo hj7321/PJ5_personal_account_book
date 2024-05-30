@@ -102,6 +102,43 @@ Router ─┤                       └─ Category
 - context API 방식의 불편한 점
   - 여전히 단방향(상위 컴포넌트에서 하위 컴포넌트)으로만 state를 전달할 수 있다.
 
+### 수정 사항
+
+- `SharedContext.js` 파일에 있던 `ExpenseContext`와 `MonthContext`를 각각 `ExpenseContext.jsx`, `MonthContext.jsx` 파일로 분리하였다.
+
+- `ExpenseContext.jsx` 파일 내용
+
+  - **Context 생성** : `createContext`를 사용하여 ExpenseContext를 생성하였다.
+  - **상태 생성** : `useState`를 사용하여 지출 내용이 객체 형태로 담긴 배열을 나타내는 `expense` 상태 변수를 생성하였다.
+  - **Provider 사용** : `ExpenseContext.Provider`로 하위 컴포넌트들에게 상태(`expense`)와 상태 함수(`setExpense`)를 전달하였다.
+
+- `MonthContext.jsx` 파일 내용
+
+  - **Context 생성** : `createContext`를 사용하여 MonthContext를 생성하였다.
+  - **상태 생성** : `useState`를 사용하여 선택한 월이 들어가는 숫자형 변수를 나타내는 `month` 상태 변수를 생성하였다.
+  - **Provider 사용** : `MonthContext.Provider`로 하위 컴포넌트들에게 상태(`month`)와 상태 함수(`setMonth`)를 전달하였다.
+
+- 바뀐 컴포넌트 구조
+
+  ```
+          ┌─ HomePage ┌─ Form
+          │           ├─ Calendar
+  Router ─┤           ├─ Graph
+          │           └─ Category
+          │
+          └─ DetailPage ── DetailContent
+  ```
+
+  - `MonthContext.jsx` 파일에서 Provider를 사용하는 과정까지 마쳤으므로, `HomePage` 컴포넌트에서 `Calendar`, `Graph`, `Category` 컴포넌트를 `<MonthProvider>`로 다음과 같이 감싸주면 된다.
+    ```jsx
+    <MonthProvider>
+      <Calendar />
+      <Graph />
+      <Category />
+    </MonthProvider>
+    ```
+  - `Calendar` 컴포넌트의 자식 컴포넌트였던 `Graph`와 `Category` 컴포넌트를 `HomePage` 컴포넌트의 자식 컴포넌트가 되도록 옮겼다.
+
 ## 3. Redux 방식으로 구현
 
 ### 컴포넌트 구조
