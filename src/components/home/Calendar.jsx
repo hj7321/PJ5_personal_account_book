@@ -1,8 +1,6 @@
 import { StSection, StButton } from "../style/CalendarStyle";
-import Graph from "./Graph";
-import Category from "./Category";
 import { useContext, useEffect } from "react";
-import MonthProvider, { MonthContext } from "../../context/MonthContext";
+import { MonthContext } from "../../context/MonthContext";
 
 const Calendar = () => {
   const { month, setMonth } = useContext(MonthContext);
@@ -32,8 +30,6 @@ const Calendar = () => {
           </StButton>
         ))}
       </StSection>
-      <Graph />
-      <Category />
     </>
   );
 };

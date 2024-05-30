@@ -100,6 +100,26 @@ Router ─┤                       └─ Category
   - `month` state의 흐름
     - `Calendar`(**사용** 및 Context API 생성) -> `Graph`, `Category`(**사용**)
 
+### 수정 사항
+
+- `SharedContext.js` 파일에 있던 `ExpenseContext`와 `MonthContext`를 각각 `ExpenseContext.jsx`, `MonthContext.jsx` 파일로 분리하였다.
+
+- `ExpenseContext.jsx` 파일 내용
+
+  - **Context 생성** : `createContext`를 사용하여 ExpenseContext를 생성하였다.
+  - **상태 생성** : `useState`를 사용하여 지출 내용이 객체 형태로 담긴 배열을 나타내는 `expense` 상태 변수를 생성하였다.
+  - **Provider 사용** : `ExpenseContext.Provider`로 하위 컴포넌트들에게 상태(`expense`)와 상태 함수(`setExpense`)를 전달하였다.
+
+- `MonthContext.jsx` 파일 내용
+
+  - **Context 생성** : `createContext`를 사용하여 MonthContext를 생성하였다.
+  - **상태 생성** : `useState`를 사용하여 선택한 월이 들어가는 숫자형 변수를 나타내는 `month` 상태 변수를 생성하였다.
+  - **Provider 사용** : `MonthContext.Provider`로 하위 컴포넌트들에게 상태(`month`)와 상태 함수(`setMonth`)를 전달하였다.
+
+- 바뀐 컴포넌트 구조
+
+  - `MonthContext.jsx` 파일에서 Provider를 사용했으므로, 컴포넌트 구조를
+
 ## 3. Redux 방식으로 구현
 
 ### 컴포넌트 구조
