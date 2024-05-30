@@ -11,9 +11,9 @@ const expenseSlice = createSlice({
       state.expense = [...state.expense, action.payload];
     },
     updateExpense: (state, action) => {
-      const { date, item, amount, description } = action.payload;
+      const { id, date, item, amount, description } = action.payload;
       state.expense = state.expense.map((obj) =>
-        obj.id === action.payload.id
+        obj.id === id
           ? {
               ...obj,
               date,

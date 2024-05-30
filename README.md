@@ -2,16 +2,34 @@
 
 개인 프로젝트: My Account Book 만들기
 
-# React + Vite
+## 프로젝트 개요
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+이 프로젝트는 사용자의 지출을 관리하기 위한 웹 애플리케이션이다.
+주요 기능으로는 지출 내역의 CRUD(작성, 조회, 수정, 삭제)와 월별 지출 조회 기능을 포함한다.
+각 기능은 props-drilling, context API, redux 순으로 상태 관리를 구현했다.
 
 ## 0. 기본 설명
+
+### 주요 기능
+
+- 지출 CRUD 기능
+
+  - **작성(Create)**: 지출 항목을 작성하여 입력한 월 목록에 추가할 수 있다.
+  - **조회(Read)**: 전체 지출 목록과 월별 지출 내역을 조회할 수 있다.
+  - **수정(Update)**: 기존 지출 항목을 수정할 수 있다.
+  - **삭제(Delete)**: 지출 항목을 삭제할 수 있다.
+
+- 월별 지출 조회
+
+  - 특정 월을 선택하여 해당 월의 지출 내역을 확인할 수 있다.
+
+- 지출 상세 화면
+  - 각 지출 항목을 클릭하면 상세 내용을 볼 수 있으며, 이 화면에서 수정 및 삭제가 가능하다.
+
+### 사용한 기술
+
+- **React**: 컴포넌트 기반 UI 라이브러리로, 프로젝트의 전반적인 구조를 구성하는 데 사용되었다.
+- **styled-components**:
 
 ### 페이지 및 컴포넌트 설명
 
